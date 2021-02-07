@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html  xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script th:src="@{/webjars/jquery/3.0.0/jquery.min.js}"></script>
+    <script th:src="@{/webjars/popper.js/1.12.9-1/umd/popper.min.js}"></script>
+    <script th:src="@{/webjars/bootstrap/4.0.0-2/js/bootstrap.min.js}"></script>
+    <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/4.0.0-2/css/bootstrap.min.css} "/>
+</head>
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <form th:action="@{/deposit}" method="post">
+                <div class="form-group">
+                    <label>Please specify the amount you would like to deposit: </label>
+                    <span class="input-group-addon">Amount $</span>
+                    <input th:value="${amount}" type="text" name="amount" id="amount" class="form-control" aria-label="Amount (to the nearest dollar)"/>
+                </div>
+
+                <input type="hidden"
+                       name="${_csrf.parameterName}"
+                       value="${_csrf.token}"/>
+
+                <button class="btn btn-lg btn-primary btn-block" type="submit">Deposit</button>
+            </form>
+
+            <div class="col-md-6">
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
