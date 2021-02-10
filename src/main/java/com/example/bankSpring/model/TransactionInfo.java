@@ -17,12 +17,23 @@ public class TransactionInfo {
     @Column(name = "status")
     private String status;
     @Column(name = "operation_amount")
-    private int operationAmount;
+    private double operationAmount;
     @ManyToOne(fetch = FetchType.EAGER, cascade = {CascadeType.MERGE, CascadeType.PERSIST})
     @JoinColumn(name = "cardid")
     private CustomerAcc customerAcc;
+    @Column(name = "balance")
+    private double balance;
 
     public TransactionInfo() {
+    }
+
+    public TransactionInfo(Date postDate, String description, String status, double operationAmount, CustomerAcc customerAcc, double balance) {
+        this.postDate = postDate;
+        this.description = description;
+        this.status = status;
+        this.operationAmount = operationAmount;
+        this.customerAcc = customerAcc;
+        this.balance = balance;
     }
 
     public int getId() {
@@ -57,6 +68,14 @@ public class TransactionInfo {
         this.status = status;
     }
 
+    public double getOperationAmount() {
+        return operationAmount;
+    }
+
+    public void setOperationAmount(double operationAmount) {
+        this.operationAmount = operationAmount;
+    }
+
     public CustomerAcc getCustomerAcc() {
         return customerAcc;
     }
@@ -65,19 +84,11 @@ public class TransactionInfo {
         this.customerAcc = customerAcc;
     }
 
-    public int getOperationAmount() {
-        return operationAmount;
+    public double getBalance() {
+        return balance;
     }
 
-    public void setOperationAmount(int operationAmount) {
-        this.operationAmount = operationAmount;
-    }
-
-    public TransactionInfo(Date postDate, String description, String status, int operationAmount, CustomerAcc customerAcc) {
-        this.postDate = postDate;
-        this.description = description;
-        this.status = status;
-        this.operationAmount = operationAmount;
-        this.customerAcc = customerAcc;
+    public void setBalance(double balance) {
+        this.balance = balance;
     }
 }

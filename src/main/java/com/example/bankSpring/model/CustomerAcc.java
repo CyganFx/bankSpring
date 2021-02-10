@@ -12,13 +12,16 @@ public class CustomerAcc {
     @Column(name = "cardid")
     private int cardId;
     @Column(name = "balance")
-    private int balance;
+    private double balance;
+    @Column(name = "cardNumber")
+    private String cardNumber;
 
     public CustomerAcc() {
     }
 
-    public CustomerAcc(int balance) {
+    public CustomerAcc(double balance, String cardNumber) {
         this.balance = balance;
+        this.cardNumber = cardNumber;
     }
 
     @OneToOne(fetch = FetchType.LAZY, optional = false)
@@ -36,11 +39,11 @@ public class CustomerAcc {
         this.cardId = cardId;
     }
 
-    public int getBalance() {
+    public double getBalance() {
         return balance;
     }
 
-    public void setBalance(int balance) {
+    public void setBalance(double balance) {
         this.balance = balance;
     }
 
@@ -50,6 +53,14 @@ public class CustomerAcc {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public String getCardNumber() {
+        return cardNumber;
+    }
+
+    public void setCardNumber(String cardNumber) {
+        this.cardNumber = cardNumber;
     }
 
     public List<TransactionInfo> getTransactionInfos() {

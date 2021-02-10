@@ -13,15 +13,15 @@ public class User {
     private Integer id;
     private String username;
     private String password;
-    private boolean enabled;
+    private String email;
 
     public User() {
     }
 
-    public User(String username, String password, boolean enabled) {
+    public User(String username, String password, String email) {
         this.username = username;
         this.password = password;
-        this.enabled = enabled;
+        this.email = email;
     }
 
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
@@ -78,11 +78,11 @@ public class User {
         this.password = password;
     }
 
-    public boolean isEnabled() {
-        return enabled;
+    public String getEmail() {
+        return email;
     }
 
-    public void setEnabled(boolean enabled) {
-        this.enabled = enabled;
+    public void setEmail(String email) {
+        this.email = email;
     }
 }

@@ -16,16 +16,11 @@ public class TransactionInfoServiceImpl implements TransactionInfoService {
     private TransactionInfoRepository transactionInfoRepository;
     @Autowired
     private UserService userService;
-    @Override
-    public List<TransactionInfo> getAllTransactionInfos() {
-        return transactionInfoRepository.findAll();
-    }
 
     @Override
     public List<TransactionInfo> findTransactionList(String username) {
         User user = userService.findByUsername(username);
-        List<TransactionInfo> transactionInfoList = user.getCustomerAcc().getTransactionInfos();
-        return transactionInfoList;
+        return user.getCustomerAcc().getTransactionInfos();
     }
 
     @Override

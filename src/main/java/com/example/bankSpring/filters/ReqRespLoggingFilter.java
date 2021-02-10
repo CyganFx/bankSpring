@@ -14,6 +14,7 @@ import java.io.IOException;
 @Order(2)
 public class ReqRespLoggingFilter implements Filter {
     private final static Logger LOG = LoggerFactory.getLogger(com.example.bankSpring.filters.ReqRespLoggingFilter.class);
+
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
         HttpServletRequest req = (HttpServletRequest) servletRequest;

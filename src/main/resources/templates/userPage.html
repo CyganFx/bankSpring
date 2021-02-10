@@ -1,20 +1,21 @@
 <!DOCTYPE html>
-<html  xmlns:th="http://thymeleaf.org"
-       xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<html xmlns:th="http://thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 <head th:replace="index :: common-header">
-<style>
-    .card {
-        background-color: cornflowerblue;
-        border: 5px;
-        border-radius: 20px;
-        width: 400px;
-        margin-top: 20%
-    }
-    .flex-column p {
-        letter-spacing: 1px;
-        font-size: 18px
-    }
-</style>
+    <style>
+        .card {
+            background-color: cornflowerblue;
+            border: 5px;
+            border-radius: 20px;
+            width: 400px;
+            margin-top: 20%
+        }
+
+        .flex-column p {
+            letter-spacing: 1px;
+            font-size: 18px
+        }
+    </style>
 </head>
 <body roleId="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
 <head th:replace="index :: navbar"/>
@@ -24,35 +25,23 @@
 <br>
 <br>
 <div class="container my-2">
-<h1><b><span sec:authentication="name">Username </span>&nbsp;</b>Banking Account</h1>
+    <h1>Welcome, <b><span sec:authentication="name">Username </span>&nbsp;</b></h1>
     <div class="card p-3">
-<!--        <div class="d-flex flex-row justify-content-between text-align-center"> <img src="https://imgur.com/vvK2ARv.png"> <i class="fas fa-ellipsis-v"></i> </div>-->
         <div class="card-bottom pt-3 px-3 mb-2">
             <div class="d-flex flex-row justify-content-between text-align-center">
-                <div class="d-flex flex-column"><span>Balance amount</span>
-                     <h1>&euro; <span th:text="${Customer.balance}">...</span></h1>
-                </div> <a th:href="@{/deposit}">Deposit into account</a>
-            </div> <a th:href="@{/withdraw}">Withdraw from your account</a>
+                <div class="d-flex flex-column">
+                    <h1><span>Balance amount: </span><span th:text="${Customer.balance}">...</span> <span
+                            th:text="${currency}">.</span></h1>
+                </div>
             </div>
         </div>
+        <h3>Change Currency to dollar:</h3>
+        <span th:if="${currency == 'KZT'}"><a th:href="@{/convertCurrency}">Convert</a></span>
+        <span th:if="${currency == 'USD'}"><a th:href="@{/convertBack}">Convert Back</a></span>
+
     </div>
 </div>
-                            <!--<i class="fa fa-comments fa-5x"></i>-->
 
-
-
-<!--                            <h1><i class="fa fa-usd" aria-hidden="true"></i> <span th:text="${Customer.balance}">...</span></h1>-->
-
-
-<!--                <a th:href="@{/info}">-->
-
-
-
-
-
-<!--                <a th:href="@{/account/deposit}">-->
-
-<!--                <a th:href="@{/account/withdraw}">-->
 
 </body>
 <script th:src="@{/webjars/jquery/3.0.0/jquery.min.js}"></script>

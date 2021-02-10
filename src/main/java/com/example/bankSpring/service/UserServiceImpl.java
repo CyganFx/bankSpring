@@ -10,13 +10,22 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class UserServiceImpl implements UserService {
-    @Autowired UserRepository userRepository;
-    @Autowired PasswordEncoder passwordEncoder;
+
+    @Autowired
+    UserRepository userRepository;
+    @Autowired
+    PasswordEncoder passwordEncoder;
 
     public void changePassword(User user, String newPassword) {
         String encodedPassword = passwordEncoder.encode(newPassword);
         user.setPassword(encodedPassword);
         userRepository.save(user);
+    }
+
+    public User register(User user) {
+        String encodedPassword = passwordEncoder.encode(user.getPassword());
+        user.setPassword(encodedPassword);
+        return userRepository.save(user);
     }
 
     @Override

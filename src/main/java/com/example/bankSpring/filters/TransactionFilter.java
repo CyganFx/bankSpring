@@ -19,6 +19,7 @@ public class TransactionFilter implements Filter {
     public void init(final FilterConfig filterConfig) throws ServletException {
         LOG.info("Initializing filter :{}", this);
     }
+
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
         HttpServletRequest request = (HttpServletRequest) servletRequest;

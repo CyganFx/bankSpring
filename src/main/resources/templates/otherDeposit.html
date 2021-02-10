@@ -12,14 +12,17 @@
 <div class="container">
     <div class="jumbotron">
         <h1 class="display-4">Welcome, <b><span th:sec:authentication="name">Username</span></b></h1>
-        <p class="lead">Here, you can remove money from deposit</p>
+        <p class="lead">Here, you can add money to your deposit</p>
     </div>
     <div class="row">
         <div class="col-md-6">
-            <form th:action="@{/withdraw}" method="post">
+            <form th:action="@{/otherDeposit}" method="post">
                 <div class="form-group">
-                    <label>Please specify the amount you would like to withdraw from your balance: </label>
-                    <span class="input-group-addon">Amount</span>
+                    <label>Please, specify card number: </label>
+                    <span class="input-group-addon">Number:</span>
+                    <input th:value="${cardNumber}" type="text" name="cardNumber" id="cardNumber" class="form-control"/>
+                    <label>Please, specify the amount you would like to add to deposit: </label>
+                    <span class="input-group-addon">Amount:</span>
                     <input th:value="${amount}" type="text" name="amount" id="amount" class="form-control"
                            aria-label="Amount (to the nearest dollar)"/>
                 </div>
@@ -28,11 +31,8 @@
                        name="${_csrf.parameterName}"
                        value="${_csrf.token}"/>
 
-                <button class="btn btn-lg btn-primary btn-block" type="submit">Withdraw</button>
+                <button class="btn btn-lg btn-primary btn-block" type="submit">Add</button>
             </form>
-
-            <div class="col-md-6">
-            </div>
         </div>
     </div>
 </div>
